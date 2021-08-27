@@ -41,4 +41,9 @@ public class CategoryService implements ICategoryService {
     public Iterable<Category> findAllOrderByName() {
         return categoryRepository.findAllOrderByName();
     }
+
+    @Override
+    public Iterable<Category> findTop2New() {
+        return categoryRepository.findTop2New();
+    }
 }

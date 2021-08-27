@@ -70,6 +70,11 @@ public class CategoryController {
     public ResponseEntity<Iterable<Category>> findAllOrderByName() {
         return new ResponseEntity<>(categoryService.findAllOrderByName(), HttpStatus.OK);
     }
+
+    @GetMapping("/top-2")
+    public ResponseEntity<Iterable<Category>> findTop2() {
+        return new ResponseEntity<>(categoryService.findTop2New(), HttpStatus.OK);
+    }
 }
 
 
