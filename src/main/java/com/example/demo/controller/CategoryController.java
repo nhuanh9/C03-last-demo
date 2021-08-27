@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.websocket.server.PathParam;
 import java.util.Optional;
 
 @RestController
@@ -57,6 +58,13 @@ public class CategoryController {
             return new ResponseEntity<>(optional.get(), HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<Iterable<Category>> findAllByNameContaining(@PathParam("name") String name) {
+        Iterable<Category> categories = categoryService.findAllByNameContaining(name);
+        return new ResponseEntity<>(categories, HttpStatus.OK);
+
     }
 }
 
