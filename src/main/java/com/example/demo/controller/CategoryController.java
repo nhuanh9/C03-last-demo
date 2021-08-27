@@ -40,7 +40,7 @@ public class CategoryController {
         Optional<Category> optional = categoryService.findById(id);
         if (optional.isPresent()) {
             Category newCategory = optional.get();
-            if (!category.getName().equals("")) {
+            if (!category.getName().trim().equals("")) { //trim là hàm cắt khoảng trắng đầu đít
                 newCategory.setName(category.getName());
             }
             categoryService.save(newCategory);
