@@ -34,4 +34,18 @@ public class CategoryController {
         }
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Category> edit(@PathVariable Long id, @RequestBody Category category) {
+        Optional<Category> optional = categoryService.findById(id);
+        if (optional.isPresent()) {
+            Category newCategory = optional.get();
+            if (!category.getName().equals("")) {
+                newCategory.setName(category.getName());
+            }
+            categoryService.save(newCategory);
+            return new ResponseEntity<>(optional.get(), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 }
