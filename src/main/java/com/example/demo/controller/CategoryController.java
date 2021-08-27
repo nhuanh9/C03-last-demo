@@ -64,7 +64,11 @@ public class CategoryController {
     public ResponseEntity<Iterable<Category>> findAllByNameContaining(@PathParam("name") String name) {
         Iterable<Category> categories = categoryService.findAllByNameContaining(name);
         return new ResponseEntity<>(categories, HttpStatus.OK);
+    }
 
+    @GetMapping("/order-by-name")
+    public ResponseEntity<Iterable<Category>> findAllOrderByName() {
+        return new ResponseEntity<>(categoryService.findAllOrderByName(), HttpStatus.OK);
     }
 }
 

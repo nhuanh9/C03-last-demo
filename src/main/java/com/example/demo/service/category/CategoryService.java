@@ -36,4 +36,9 @@ public class CategoryService implements ICategoryService {
     public Iterable<Category> findAllByNameContaining(String name) {
         return categoryRepository.findAllByNameContaining(name);
     }
+
+    @Override
+    public Iterable<Category> findAllOrderByName() {
+        return categoryRepository.findAllOrderByName();
+    }
 }
