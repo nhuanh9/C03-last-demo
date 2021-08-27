@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/categories")
 public class CategoryController {
@@ -24,5 +26,12 @@ public class CategoryController {
         return new ResponseEntity(HttpStatus.CREATED);
     }
 
-
+    @GetMapping("/{id}")
+    public ResponseEntity<Category> findById(@PathVariable Long id) {
+        Optional<Category> optional = categoryService.findById(id);
+        if (optional.isPresent()) {
+            return new ResponseEntity<>(optional.get(), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 }
