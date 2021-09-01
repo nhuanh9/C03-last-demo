@@ -14,6 +14,7 @@ public interface CategoryRepository extends CrudRepository<Category, Long> {
     Iterable<Category> findAllOrderByName();
 
     @Modifying
-    @Query(value = "select * from Category order by id desc limit 2 ", nativeQuery = true)
+    @Query(value = "select * from category order by id desc limit 2", nativeQuery = true)
     Iterable<Category> findTop2New();
+
 }
